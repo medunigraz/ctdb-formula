@@ -36,7 +36,7 @@ ctdb_packages:
 
 ctdb_services:
   service.running:
-    - name: {{ ctdb.service }}
+    - name: {{ ctdb.services }}
     - enable: True
     - watch:
       - file: {{ ctdb.files.config }}
