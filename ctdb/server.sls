@@ -2,7 +2,7 @@
 
 ctdb_packages:
   pkg.installed:
-    - name: {{ ctdb.pkgs }}
+    - names: {{ ctdb.pkgs }}
 
 {{ ctdb.files.config }}:
   file.managed:
@@ -36,7 +36,7 @@ ctdb_packages:
 
 ctdb_services:
   service.running:
-    - name: {{ ctdb.services }}
+    - names: {{ ctdb.services }}
     - enable: True
     - watch:
       - file: {{ ctdb.files.config }}
