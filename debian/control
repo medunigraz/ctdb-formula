@@ -1,0 +1,15 @@
+Source: salt-formula-ctdb
+Maintainer: Michael Fladischer <michael.fladischer@medunigraz.at>
+Section: admin
+Priority: optional
+Build-Depends: debhelper (>= 9), salt-master, python, python-yaml
+Standards-Version: 3.9.6
+Homepage: https://github.com/medunigraz
+Vcs-Browser: https://github.com/salt-formulas/salt-formula-ctdb
+Vcs-Git: https://github.com/salt-formulas/salt-formula-ctdb.git
+
+Package: salt-formula-ctdb
+Architecture: all
+Depends: ${misc:Depends}
+Description: ctdb salt formula
+ Install and configure ctdb.

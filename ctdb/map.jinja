@@ -1,0 +1,28 @@
+{%- load_yaml as ctdbd_defaults %}
+Debian:
+  CTDB_NODES: /etc/ctdb/nodes
+  CTDB_PUBLIC_ADDRESSES: /etc/ctdb/public_addresses
+  CTDB_MANAGES_SAMBA: false
+  CTDB_MANAGES_WINBIND: false
+  CTDB_MANAGES_NFS: false
+  CTDB_MAX_OPEN_FILES: 10000
+  CTDB_LOGGING: file:/var/log/log.ctdb
+  CTDB_DEBUGLEVEL: ERR
+{%- endload %}
+{% set ctdbd = salt['grains.filter_by'](ctdbd_defaults) %}
+
+{%- load_yaml as ctdb_defaults %}
+Debian:
+  pkgs:
+  - ctdb
+  services:
+  - ctdb
+  files:
+    config: /etc/ctdb/ctdbd.conf
+    nodes: {{ ctdbd_defaults.CTDB_NODES }}
+    public_addresses: {{ ctdbd_defaults.CTDB_PUBLIC_ADDRESSES }}
+  config:
+    {{ ctdbd|yaml }}
+  members: []
+{%- endload %}
+{% set ctdb = salt['grains.filter_by'](ctdb_defaults, merge=salt['pillar.get']('ctdb')) %}

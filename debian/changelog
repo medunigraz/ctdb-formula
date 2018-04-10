@@ -1,0 +1,5 @@
+salt-formula-ctdb (2018.1) stretch; urgency=medium
+
+  * Initial release
+
+ -- Michael Fladischer michael.fladischer@medunigraz.at  Tue, 10 Apr 2018 09:17:34 BST

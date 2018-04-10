@@ -1,0 +1,3 @@
+{%- for member in salt['pillar.get']('ctdb:members') %}
+{{ member.public }} {{ member.interface }}
+{%- endfor %}

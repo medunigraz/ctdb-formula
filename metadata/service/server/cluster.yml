@@ -1,0 +1,10 @@
+applications:
+- ctdb
+classes:
+- service.ctdb.support
+parameters:
+  ctdb:
+    server:
+      enabled: true
+      bind:
+        address: 0.0.0.0
