@@ -1,3 +1,5 @@
+{% from "ctdb/map.jinja" import ctdb with context %}
+
 ctdb_packages:
   pkg.installed:
     - name: {{ ctdb.pkgs }}
