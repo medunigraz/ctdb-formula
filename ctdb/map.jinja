@@ -19,8 +19,8 @@ Debian:
   - ctdb
   files:
     config: /etc/ctdb/ctdbd.conf
-    nodes: {{ ctdbd_defaults.CTDB_NODES }}
-    public_addresses: {{ ctdbd_defaults.CTDB_PUBLIC_ADDRESSES }}
+    nodes: {{ ctdbd.CTDB_NODES }}
+    public_addresses: {{ ctdbd.CTDB_PUBLIC_ADDRESSES }}
   config:
     {{ ctdbd|yaml }}
   members: []
