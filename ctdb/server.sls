@@ -24,6 +24,7 @@ ctdb_packages:
     - require:
       - pkg: ctdb_packages
 
+{%- if ctdb.get('manage_public', False) %}
 {{ ctdb.files.public_addresses }}:
   file.managed:
     - source: salt://ctdb/files/public_addresses
@@ -33,6 +34,11 @@ ctdb_packages:
     - mode: 644
     - require:
       - pkg: ctdb_packages
+    - watch_in:
+      - service: ctdb_services
+    - require_in:
+      - service: ctdb_services
+{%- endif %}
 
 ctdb_services:
   service.running:
@@ -41,9 +47,7 @@ ctdb_services:
     - watch:
       - file: {{ ctdb.files.config }}
       - file: {{ ctdb.files.nodes }}
-      - file: {{ ctdb.files.public_addresses }}
     - require:
       - pkg: ctdb
       - file: {{ ctdb.files.config }}
       - file: {{ ctdb.files.nodes }}
-      - file: {{ ctdb.files.public_addresses }}
